@@ -1,6 +1,8 @@
 # names-bot
 A public discord bot powered by namedc.org's api.
 
+Search Discord Usernames in namedc.org's database, using slash commands.
+
 
 ### Links
 > API-Documentation: https://docs.namedc.org
