@@ -4,6 +4,7 @@ A public discord bot powered by namedc.org's api.
 
 ### Links
 > API-Documentation: https://docs.namedc.org
+
 > Purchase / Redeem a API Key: https://namedc.org/purchase
 
 
