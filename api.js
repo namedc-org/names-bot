@@ -14,13 +14,13 @@ async function search(username) {
         if (res.status == 200) {
             return res.data;
         } else {
-            return null;
+            return err.response.status;
         }
 
     }
 
     catch (err) {
-        return null;
+        return err.response.status;
     }
 
 
