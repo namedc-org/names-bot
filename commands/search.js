@@ -1,6 +1,6 @@
 const { Command } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
-const { search } = require('../api');
+const { search, getUser } = require('../api');
 
 
 
@@ -35,7 +35,30 @@ class searchCommand extends Command {
 
 
     //searching for username
-    const res = await search(username);
+    let res = await search(username);
+    let user = null
+
+    //if user is not found and username is a id
+    if(res == 404 && username.length == 18 || res == 404 && username.length == 19 || username.length == 17) {
+        //try to get user by id
+        const newuser = await getUser(username);
+
+        //if user is a number
+        if(isNaN(newuser)) {
+            user = newuser;
+            
+            if(newuser.discriminator == '0') {
+                res = await search(newuser.username);
+            }
+
+        }
+
+    } else if (isNaN(res)){
+        user = await getUser(res.history[res.history.length - 1].userid);
+    }
+            
+
+        
 
     switch (res) {
         case 404:
@@ -107,7 +130,14 @@ class searchCommand extends Command {
             .setURL(`https://namedc.org/search?query=${res.name}`)
             .setFooter({ text: 'namedc.org', iconURL: 'https://namedc.org/uploads/logo.png' })
             .setTimestamp();
-            
+
+            if(user.avatar != null) {
+                embed200.setThumbnail(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
+            } else {
+                embed200.setThumbnail(`https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`)
+            }
+
+
             //adding history fields
             for (let i = 0; i < res.history.length; i++) {
                 embed200.addFields(
