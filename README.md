@@ -10,35 +10,19 @@ Search Discord Usernames in namedc.org's database, using slash commands.
 
 > Purchase / Redeem a API Key: https://namedc.org/purchase
 
-# How to use
+# How to use:
 
-### Requirements:
+- Install [NodeJS](https://nodejs.org/en)
+- Install depencies: `npm i`
+- Configure the bot by modifiying the [config.json](https://github.com/namedc-org/names-bot/blob/main/config.json) file.
+- Run the bot: `node .`
 
--   NPM & Node-JS
+### `config.json` file:
 
-### Start by editing the `config.json` file:
-
--   api_token:
-
-The api token you've received when redeeming your key on https://namedc.org/purchase
-
--   token:
-
-Your Discord bot token, get it on https://discord.com/developers/applications
-
-### Install The Packages
-
-Start your command promt on the folder, and use these commands:
-
--   `npm install @sapphire/framework`
--   `npm install discord.js`
--   `npm install axios`
-
-### Run the bot
-
-On the same command promt, use the command:
-
--   `node index.js`
+| option | type | required | obtainable at
+|----------|----------|----------|----------|
+| api_token    | String     | true     | [by purchasing](https://namedc.org/purchase)
+| token    | String    | true    | [by creating a bot](https://discord.com/developers/applications)
 
 An example output:
 
